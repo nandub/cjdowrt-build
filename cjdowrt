@@ -1,7 +1,9 @@
 #!/bin/bash
 
-mkdir -p `pwd`/cjdowrt                                                      
-pushd `pwd`/cjdowrt                                                         
+set -e
+
+mkdir -p `pwd`/cjdowrt-build                                                    
+pushd `pwd`/cjdowrt-build                                                         
   svn co svn://svn.openwrt.org/openwrt/trunk/ openwrt                       
   cd openwrt                                                                
   cp ./feeds.conf.default ./feeds.conf                                      
