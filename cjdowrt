@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+svn --version 2> /dev/null
+if [ $? != 0 ]; then
+  echo please install subversion
+  exit
+fi
 
 mkdir -p `pwd`/cjdowrt-build                                                    
 pushd `pwd`/cjdowrt-build                                                         
