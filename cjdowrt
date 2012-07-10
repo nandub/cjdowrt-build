@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mkdir -p `pwd`/cjdowrt                                                      
+pushd `pwd`/cjdowrt                                                         
+  svn co svn://svn.openwrt.org/openwrt/trunk/ openwrt                       
+  cd openwrt                                                                
+  cp ./feeds.conf.default ./feeds.conf                                      
+  echo 'src-git cjdns git://github.com/cjdelisle/cjdns-openwrt.git' >> ./fee
+  ./scripts/feeds update -a                                                 
+  ./scripts/feeds install cjdns                                             
+  make menuconfig                                                           
+popd
