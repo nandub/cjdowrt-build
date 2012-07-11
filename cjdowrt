@@ -12,9 +12,9 @@ if [ $? != 0 ]; then
   exit
 fi
 
-python --version 2> /dev/null
+python2 -V 2> /dev/null
 if [ $? != 0 ]; then
-  echo Please install python
+  echo Please install python2
   exit
 fi
 
