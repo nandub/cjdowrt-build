@@ -22,7 +22,7 @@ fi
 
 set -e
 
-ln -s `which python2` `pwd`/python
+ln -sf `which python2` `pwd`/python
 export PATH=`pwd`:$PATH
 
 echo Build cjdns on OpenWRT
