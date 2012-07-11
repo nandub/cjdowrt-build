@@ -20,13 +20,16 @@ fi
 
 set -e
 
-mkdir -p `pwd`/cjdowrt-build                                                    
-pushd `pwd`/cjdowrt-build                                                         
-  svn co svn://svn.openwrt.org/openwrt/trunk/ openwrt                       
-  cd openwrt                                                                
-  cp ./feeds.conf.default ./feeds.conf                                      
+echo Build cjdns on OpenWRT
+mkdir -p `pwd`/cjdowrt-build
+pushd `pwd`/cjdowrt-build
+  svn co svn://svn.openwrt.org/openwrt/trunk/ openwrt
+  cd openwrt
+  cp ./feeds.conf.default ./feeds.conf 
   echo 'src-git cjdns git://github.com/cjdelisle/cjdns-openwrt.git' >> ./feeds.conf
-  ./scripts/feeds update -a                                                 
-  ./scripts/feeds install cjdns                                             
-  make menuconfig                                                           
+  ./scripts/feeds update -a
+  ./scripts/feeds install cjdns
+  make menuconfig
+  make defconfig
+  make
 popd
