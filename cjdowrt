@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DEBUG=$1
+
 svn --version 2> /dev/null
 if [ $? != 0 ]; then
   echo Please install subversion
@@ -29,7 +31,7 @@ pushd `pwd`/cjdowrt-build
   echo 'src-git cjdns git://github.com/cjdelisle/cjdns-openwrt.git' >> ./feeds.conf
   ./scripts/feeds update -a
   ./scripts/feeds install cjdns
-  make menuconfig
-  make defconfig
-  make
+  make menuconfig $DEBUG
+  make defconfig $DEBUG
+  make $DEBUG
 popd
