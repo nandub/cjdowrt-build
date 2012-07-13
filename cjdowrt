@@ -2,28 +2,35 @@
 
 DEBUG=$1
 
+REQUIRED=
 svn --version 2> /dev/null
 if [ $? != 0 ]; then
-  echo Please install subversion
-  exit
+  REQUIRED=svn
+  #echo Please install subversion
+  #exit
 fi
 
 unzip -v 2> /dev/null
 if [ $? != 0 ]; then
-  echo Please install unzip
-  exit
+  REQUIRED=$REQUIRED unzip
+  #echo Please install unzip
+  #exit
 fi
 
 python2 -V 2> /dev/null
-if [ $? != 0 ]; then
-  echo Please install python2
-  exit
+if [ $? != 0 ]
+then
+  REQUIRED=$REQUIRED python2
+  #echo Please install python2
+  #exit
+else
+  ln -sf `which python2` `pwd`/python                                                   
+  export PATH=`pwd`:$PATH
 fi
 
-set -e
+if [ -n $REQUIRED ]; then echo "Please install $REQUIRED package(s)" ; exit 1; fi
 
-ln -sf `which python2` `pwd`/python
-export PATH=`pwd`:$PATH
+set -e
 
 echo Build cjdns on OpenWRT
 mkdir -p `pwd`/cjdowrt-build
