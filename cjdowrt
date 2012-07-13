@@ -12,7 +12,7 @@ fi
 
 unzip -v 2> /dev/null
 if [ $? != 0 ]; then
-  REQUIRED=$REQUIRED unzip
+  REQUIRED="$REQUIRED unzip"
   #echo Please install unzip
   #exit
 fi
@@ -20,7 +20,7 @@ fi
 python2 -V 2> /dev/null
 if [ $? != 0 ]
 then
-  REQUIRED=$REQUIRED python2
+  REQUIRED="$REQUIRED python2"
   #echo Please install python2
   #exit
 else
