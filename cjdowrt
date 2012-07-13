@@ -28,7 +28,7 @@ else
   export PATH=`pwd`:$PATH
 fi
 
-if [ -n $REQUIRED ]; then echo "Please install $REQUIRED package(s)" ; exit 1; fi
+if [ -n "${REQUIRED}" ]; then echo "Please install ${REQUIRED} packages" ; exit 1; fi
 
 set -e
 
